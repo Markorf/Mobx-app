@@ -1,10 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "mobx-react";
+import "./index.css";
+import App from "./App";
+import DogStore from "./store/DogStore";
+import CatStore from "./store/CatStore";
+import * as serviceWorker from "./serviceWorker";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const Root = (
+  <Provider DogStore={DogStore} CatStore={CatStore}>
+    <App />
+  </Provider>
+);
+
+ReactDOM.render(Root, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
